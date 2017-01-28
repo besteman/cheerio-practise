@@ -1,0 +1,24 @@
+{
+  "name": "cheerio-practise",
+  "version": "1.0.0",
+  "description": "To practise cheerio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinbesteman/cheerio-practise.git"
+  },
+  "author": "Justin Besteman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinbesteman/cheerio-practise/issues"
+  },
+  "homepage": "https://github.com/justinbesteman/cheerio-practise#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "console.table": "^0.8.0",
+    "request": "^2.79.0"
+  }
+}

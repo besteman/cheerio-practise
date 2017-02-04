@@ -4,53 +4,54 @@ require('console.table');
 
 // http://www.mywipersize.com/make/tesla/roadster.php
 
-var company = "chevrolet";
-var car = "malibu";
 
-request({
-    method: 'GET',
-    url: 'http://www.mywipersize.com/make/'+ company + '/' + car + '.php'
-}, function(err, response, body) {
-    if (err) return console.error(err);
+module.exports = function (company,car,callback){
+	console.log("company " + company);
+	console.log("car " + car);
+	console.log('http://www.mywipersize.com/make/'+ company + '/' + car + '.php');
+	request({
+	    method: 'GET',
+	    url: 'http://www.mywipersize.com/make/'+ company + '/' + car + '.php'
+	}, function(err, response, body) {
+	    if (err) return console.error(err);
 
-    // Tell Cherrio to load the HTML
-    $ = cheerio.load(body);
-    
-   var test = $(".views-table").text();
+	    // Tell Cherrio to load the HTML
+	    $ = cheerio.load(body);
+	 
+	   var test = $(".views-table").text();
 
-   var array = test.split(" ");
+	   var array = test.split(" ");
 
-   //console.log(array);
+	   //console.log(array);
 
-   array = array.filter(function(entry) { return entry.trim() != ''; });
+	   array = array.filter(function(entry) { return entry.trim() != ''; });
 
-   var test_array = [];
+	   var test_array = [];
 
-	for (let i = 6; i < array.length; i = i + 3) {
+		for (let i = 6; i < array.length; i = i + 3) {
 
-		let new_array = [];
+			let new_array = [];
 
-		new_array.push(array[i],array[i+1],array[i+2]);
+			new_array.push(array[i],array[i+1],array[i+2]);
 
-		test_array.push(new_array);
+			test_array.push(new_array);
 
-	}
+		}
 
-	var cars = test_array.map(function (item) {
-	    return {
-	        year: parseInt(item[0], 10),
-	        driver_side: item[1],
-	        pass_side: item[2]
-	    };
+		var cars = test_array.map(function (item) {
+		    return {
+		        year: parseInt(item[0], 10),
+		        driver_side: item[1],
+		        pass_side: item[2]
+		    };
+		});
+
+
+		callback(cars);
+		
+
 	});
 
-	console.log(cars);
 
-  //console.log(array);
+}
 
-
-  console.table(cars);
-
-});
-
-module.exports = cars;

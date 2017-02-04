@@ -2,7 +2,7 @@
   "name": "cheerio-practise",
   "version": "1.0.0",
   "description": "To practise cheerio",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
     "cheerio": "^0.22.0",
     "console.table": "^0.8.0",
     "express": "^4.14.1",
+    "method-override": "^2.3.7",
     "request": "^2.79.0"
   }
 }
